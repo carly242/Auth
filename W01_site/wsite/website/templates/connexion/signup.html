@@ -1,0 +1,59 @@
+{% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"crossorigin="anonymous"></script>
+    <title>W.01</title>
+  </head>
+  <body>
+
+    <link href="{% static 'login.css' %}" rel="stylesheet">
+
+
+    <div class="container">
+      <div class="logo-container">
+        <img src="{% static 'image/w.01.jpg' %}" alt="Logo">
+    </div>
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form method="POST" action="{% url 'register' %}" class="sign-in-form"/>
+          {% csrf_token %}
+            <h2 class="title">Creer un compte</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name= "username" placeholder="Username" />
+            </div>
+            <div class="input-field">                                                                                  
+
+              <i class="fas fa-envelope"></i>
+              <input type="text" name="email" placeholder="Email"/>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="password" placeholder="Password"/>
+            </div>
+            <input type="submit" value="Valider" class="btn solid" />
+            <a href="{% url 'home' %}" class="btn1 solid">Connect</a>
+
+            
+          </form>
+
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center">
+              {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+
+                    <a class="alert alert-success" style="color:red;"> {{ message }}</a>
+
+                {% endfor %}
+            </div>
+            {% endif %}
+              </div>
+      </div>
+
+
